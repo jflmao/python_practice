@@ -14,7 +14,6 @@
     需求：根据给定的关键字获取图片，获取3页数据
 """
 import asyncio
-import os
 import time
 
 from aiohttp import ClientSession

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>判断是否闰年</title>
+		<script>
+			function isLeapYear(iYear, oTip) {
+				if (iYear === 0 || isNaN(iYear)) {
+					console.log("输入错误，请重新输入！");
+					oTip.innerHTML = "输入错误，请重新输入！";
+					oTip.style = "color: red";
+				} else {
+					console.log("输入正确！");
+					if (0 === iYear % 4 && 0 !== iYear % 100 || 0 === iYear % 400) {
+						oTip.innerHTML = "公元 " + iYear + " 年是闰年。";
+						oTip.style = "color: green";
+						console.log("公元 " + iYear + " 年是闰年。");
+					} else {
+						oTip.innerHTML = "公元 " + iYear + " 年不是闰年。";
+						oTip.style = "color: red";
+						console.log("公元 " + iYear + " 年不是闰年。");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<br>
+		<br>
+		<div>
+			<p>
+				<h2>闰年的判断</h2>
+			</p>
+			<p>
+				<label for="year">请输入一个年份：</label>
+				<input type="text" id="year" onblur="isLeapYear(this.value, document.getElementById('tip'))">
+			</p>
+			<p>
+				<label>结果：</label><label id="tip"></label>
+			</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>
+			$(function() {
+				var $change1 = $("#change1");
+				var $change2 = $("#change2");
+				var $change3 = $("#change3");
+				var $cv = $("#cv");
+				var $del = $("#del");
+				var $ajax_req = $("#ajax_req");
+				// 1.使用jquery修改div元素的背景色(随意颜色)
+				$change1.click(function() {
+					$("div").css({
+						"background": "red"
+					});
+				});
+				// 2.使用jquery修改div的子元素p的内容为"我是子元素"
+				$change2.click(function() {
+					$("div p").html("我是子元素");
+				});
+				// 3.使用jquery修改第二个p元素的背景色为"orange"
+				$change3.click(function() {
+					$("div p").eq(1).css({
+						"background": "orange"
+					});
+				});
+				// 4.使用jQuery添加文本的方式将“添加的文本”追加到p标签的后方
+				$cv.click(function() {
+					$("div p").append("添加的文本");
+				});
+				// 5.删除列表元素中最后一个li元素里的内容
+				$del.click(function() {
+					$("ul li").eq(-1).html("");
+				});
+				// 6.使用ajax方法对网址：http://www.liulongbin.top:3006/api/getbooks 发送请求；
+				// 并使用循环的方式将作者展示在id为box1的标签里面 
+				$ajax_req.click(function() {
+					$.get("http://www.liulongbin.top:3006/api/getbooks", function(data) {
+						// $.each(data.data, function() {
+						// 	$("#box1").append(this.author + "<br>");
+						// });
+						for (var i = 0; i < data.data.length; i++) {
+							$("#box1").append(data.data[i].author + "<br>");
+						}
+					}).error(function() {
+						console.log("请求失败");
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="change1">点击改变背景颜色</button>
+		<button id="change2">点击修改子元素内容</button>
+		<button id="change3">点击修改p元素背景</button>
+		<button id="cv">点击克隆p元素</button>
+		<button id="del">点击删除最后的li元素</button>
+		<button id="ajax_req">发送ajax请求获取数据</button>
+		<a href="https://github.com/jflmao/python_practice"
+			target="_blank">https://github.com/jflmao/python_practice</a>
+		<div>
+			<p>关关雎鸠，在河之洲。</p>
+			<p>窈窕淑女，君子好逑。</p>
+			<p>参差荇菜，左右流之。</p>
+			<p>窈窕淑女，寤寐求之。</p>
+			<p>求之不得，寤寐思服。</p>
+			<p>悠哉悠哉，辗转反侧。</p>
+			<ul>
+				<li>《西游记》</li>
+				<li>《红楼梦》</li>
+				<li>《水浒传》</li>
+				<li>《三国演义》</li>
+				<li>《金瓶梅》</li>
+			</ul>
+			<div id="box1"></div>
+		</div>
+	</body>
+</html>

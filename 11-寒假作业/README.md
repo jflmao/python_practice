@@ -27,7 +27,7 @@
   > 网址：https://haokan.baidu.com  
   > 需求：获取到娱乐分类里面的100条视频，下载到本地
 
-- [ ] 获取淘宝数据信息  
+- [x] 获取淘宝数据信息  
   > 网址：https://s.taobao.com/search?initiative_id=staobaoz_20230111&q=Python  
   > 需求：获取到20页数据，获取到'标题', '价格', '购买人数', '地点', '网址', '图片地址', '评论数', '店铺'
 

@@ -76,44 +76,45 @@ class TaoBao:
 
         :return: None
         """
-        tasks = []
-        for i in range(self.page):
-            # 翻页参数从0开始，每页+44
-            res = self.parse_data(self.url.format(i*44))
-            tasks.append(asyncio.create_task(res))
-        await asyncio.wait(tasks)
+        async with ClientSession(headers=self.headers, cookies=self.cookies) as session:
+            tasks = []
+            for i in range(self.page):
+                # 翻页参数从0开始，每页+44
+                res = self.parse_data(session, self.url.format(i*44))
+                tasks.append(asyncio.create_task(res))
+            await asyncio.wait(tasks)
 
-    async def parse_data(self, url: str) -> None:
+    async def parse_data(self, session: ClientSession, url: str) -> None:
         """
             解析数据
 
+        :param session: aiohttp.ClientSession 对象
         :param url: 当前页地址
         :return: None
         """
-        async with ClientSession(headers=self.headers, cookies=self.cookies) as session:
-            response = await session.get(url)
-            resp = await response.text()
-            try:
-                # 提取页面里的列表数据
-                res = re.findall('"auctions":(.*?),"recommendAuctions"', resp)[0]
-            except IndexError:
-                print('被反爬，请稍后重试..')
-                exit()
-            res_json = json.loads(res)
-            # 遍历列表，获取数据
-            for item in res_json:
-                info_json = {
-                    '标题': item['raw_title'],
-                    '价格': item['view_price'],
-                    '购买人数': item['view_sales'],
-                    '地点': item['item_loc'],
-                    '网址': 'https:{}'.format(item['comment_url']) if item['comment_url'].startswith('//') else item['comment_url'],
-                    '图片地址': 'https:{}'.format(item['pic_url']) if item['pic_url'].startswith('//') else item['pic_url'],
-                    '评论数': item['comment_count'],
-                    '店铺': item['shopName'],
-                    '店铺地址': 'https:{}'.format(item['shopLink']) if item['shopLink'].startswith('//') else item['shopLink']
-                }
-                await self.save_data(info_json)
+        response = await session.get(url)
+        resp = await response.text()
+        try:
+            # 提取页面里的列表数据
+            res = re.findall('"auctions":(.*?),"recommendAuctions"', resp)[0]
+        except IndexError:
+            print('被反爬，请稍后重试..')
+            exit()
+        res_json = json.loads(res)
+        # 遍历列表，获取数据
+        for item in res_json:
+            info_json = {
+                '标题': item['raw_title'],
+                '价格': item['view_price'],
+                '购买人数': item['view_sales'],
+                '地点': item['item_loc'],
+                '网址': 'https:{}'.format(item['comment_url']) if item['comment_url'].startswith('//') else item['comment_url'],
+                '图片地址': 'https:{}'.format(item['pic_url']) if item['pic_url'].startswith('//') else item['pic_url'],
+                '评论数': item['comment_count'],
+                '店铺': item['shopName'],
+                '店铺地址': 'https:{}'.format(item['shopLink']) if item['shopLink'].startswith('//') else item['shopLink']
+            }
+            await self.save_data(info_json)
 
     async def save_data(self, info_json: dict) -> None:
         """

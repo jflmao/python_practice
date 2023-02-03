@@ -43,6 +43,6 @@
   > 网址：https://ac.qq.com/Comic/index/page/  
   > 需求：获取5页数据，获取到漫画的标题、人气、简介、漫画类型
 
-- [ ] 阴阳师壁纸采集  
+- [x] 阴阳师壁纸采集  
   > 网址：https://yys.163.com/media/picture.html  
   > 需求：获取到阴阳师所有的壁纸图片

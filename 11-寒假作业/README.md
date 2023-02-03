@@ -31,7 +31,7 @@
   > 网址：https://s.taobao.com/search?initiative_id=staobaoz_20230111&q=Python  
   > 需求：获取到20页数据，获取到'标题', '价格', '购买人数', '地点', '网址', '图片地址', '评论数', '店铺'
 
-- [ ] 采集站长素材的音效数据  
+- [x] 采集站长素材的音效数据  
   > 网址：https://sc.chinaz.com/yinxiao/index_1.html  
   > 需求：获取5页的音频数据
 

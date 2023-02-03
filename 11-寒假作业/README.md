@@ -35,9 +35,9 @@
   > 网址：https://sc.chinaz.com/yinxiao/index_1.html  
   > 需求：获取5页的音频数据
 
-- [ ] 采集网易新闻数据  
+- [x] 采集网易新闻数据  
   > 网址：https://c.m.163.com/news/hot/newsList  
-  > 需求：获取到当前进入详情页面的a标签，提前详情页面的文本数据
+  > 需求：获取到当前进入详情页面的a标签，提取详情页面的文本数据
 
 - [ ] 获取腾讯动漫的动漫数据  
   > 网址：https://ac.qq.com/Comic/index/page/  

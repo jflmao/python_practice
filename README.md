@@ -27,6 +27,7 @@
     - [x] 阴阳师壁纸采集
 - [x] 12-自动化作业
 - [x] 13-免费ip采集测试
+- [x] 14-前程无忧 [51job.com]
  
 ## 01-html和css作业
 > 
@@ -178,3 +179,7 @@
 ## 13-免费ip采集测试
 > 采集快代理30页ip数据进行测试，获取到有效的ip地址  
 > 网址：https://www.kuaidaili.com/free/
+
+## 14-前程无忧 [51job.com]
+> 地址：https://we.51job.com/pc/search?jobArea=190200&keyword=%E7%88%AC%E8%99%AB&searchType=2&sortType=0&metro=  
+> 要求：破解签名采集对应数据

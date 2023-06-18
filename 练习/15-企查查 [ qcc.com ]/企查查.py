@@ -17,11 +17,7 @@ class QCC:
     def __init__(self, enterprise_id):
         self.sess = requests.Session()
         self.enterprise_id = enterprise_id
-        self.cookie = "QCCSESSID=bbcf473d4346ac561a02d344eb; " \
-                 "qcc_did=d03e6dbf-46ab-48d4-bcb7-435662103ce9; " \
-                 "UM_distinctid=188ceae9197700-074034b468331f-7e565479-1fa400-188ceae9198aff; " \
-                 "CNZZDATA1254842228=1861552239-1687093874-https%253A%252F%252Fwww.qcc.com%252F%7C1687093874; " \
-                 "acw_tc=d35b402d16870967736451834e63d4de97a39a1bfaaee083ceafa5f781"
+        self.cookie = ""  # 需要登录后的cookie
         self.headers = {
                 "authority": "www.qcc.com",
                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",

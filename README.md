@@ -29,6 +29,7 @@
 - [x] 13-免费ip采集测试
 - [x] 14-前程无忧 [ 51job.com ]
 - [x] 15-企查查 [ qcc.com ]
+- [x] 16-红人点集 [ hh1024.com ]
  
 ## 01-html和css作业
 > 
@@ -187,3 +188,7 @@
 
 ## 15-企查查 [ qcc.com ]
 > 要求：逆向请求头 headers 中的加密 key 和 value 的值
+
+## 16-红人点集 [ hh1024.com ]
+> 地址：http://www.hh1024.com/#/login?redirect=%2FrealTimeLiving  
+> 需求：协议分析进行模拟登陆获取返回的token信息

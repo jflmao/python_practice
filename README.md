@@ -30,6 +30,7 @@
 - [x] 14-前程无忧 [ 51job.com ]
 - [x] 15-企查查 [ qcc.com ]
 - [x] 16-红人点集 [ hh1024.com ]
+- [x] 17-有道翻译 [ fanyi.youdao.com ]
  
 ## 01-html和css作业
 > 
@@ -192,3 +193,7 @@
 ## 16-红人点集 [ hh1024.com ]
 > 地址：http://www.hh1024.com/#/login?redirect=%2FrealTimeLiving  
 > 需求：协议分析进行模拟登陆获取返回的token信息
+
+## 17-有道翻译 [ fanyi.youdao.com ]
+> 地址：https://fanyi.youdao.com/index.html#/  
+> 需求：使用webpack技术提取响应数据

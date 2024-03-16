@@ -31,6 +31,7 @@
 - [x] 15-企查查 [ qcc.com ]
 - [x] 16-红人点集 [ hh1024.com ]
 - [x] 17-有道翻译 [ fanyi.youdao.com ]
+- [x] 18-国家医疗保障 [ fuwu.nhsa.gov.cn ]
  
 ## 01-html和css作业
 > 
@@ -197,3 +198,7 @@
 ## 17-有道翻译 [ fanyi.youdao.com ]
 > 地址：https://fanyi.youdao.com/index.html#/  
 > 需求：使用webpack技术提取响应数据
+
+## 18-国家医疗保障 [ fuwu.nhsa.gov.cn ]
+> 地址：https://fuwu.nhsa.gov.cn/nationalHallSt/#/search/medical?code=90000&flag=false&gbFlag=true  
+> 需求：破解参数，并解密返回的数据

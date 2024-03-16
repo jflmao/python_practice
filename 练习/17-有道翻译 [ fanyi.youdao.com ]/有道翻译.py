@@ -32,7 +32,8 @@ class YOUDAO(object):
         self.sess = Session()
         cookies = "OUTFOX_SEARCH_USER_ID_NCOO=1393269207.1100566; OUTFOX_SEARCH_USER_ID=727599050@218.22.69.126"
         # noinspection PyTypeChecker
-        cookies_dict = dict([ck.strip().split("=") for ck in cookies.split(";")])
+        cookies_dict = dict([ck.strip().split("=") for ck in
+                             cookies.split(";")])
         self.sess.cookies = utils.cookiejar_from_dict(cookies_dict)
         self.headers = {
             "Accept": "application/json, text/plain, */*",
@@ -52,7 +53,8 @@ class YOUDAO(object):
             "sec-ch-ua-platform": "\"Windows\""
         }
         self.params = {}
-        with open('加解密.js') as f:
+        with open('加解密.js',
+                  encoding='utf-8') as f:
             jstext = f.read()
         self.job = execjs.compile(jstext)
         self.secretKey = None
@@ -65,7 +67,8 @@ class YOUDAO(object):
         :param key: key值
         :return: 返回 签名的 MD5 hash字符串
         """
-        args = 'client=fanyideskweb&mysticTime={}&product=webfanyi&key={}'.format(nowtime, key)
+        args = 'client=fanyideskweb&mysticTime={}&product=webfanyi&key={}'.format(nowtime,
+                                                                                  key)
         return hashlib.md5(args.encode("utf-8")).hexdigest()
 
     def get_secretKey(self) -> str:
@@ -77,7 +80,8 @@ class YOUDAO(object):
         self.sess.headers = self.headers
         self.params = {
             "keyid": "webfanyi-key-getter",
-            "sign": self.get_sign(mysticTime, "asdjnjfenknafdfsdfsd"),
+            "sign": self.get_sign(mysticTime,
+                                  "asdjnjfenknafdfsdfsd"),
             "client": "fanyideskweb",
             "product": "webfanyi",
             "appVersion": "1.0.0",
@@ -86,10 +90,12 @@ class YOUDAO(object):
             "mysticTime": mysticTime,
             "keyfrom": "fanyi.web"
         }
-        res = self.sess.get(self.url, params=self.params).json()
+        res = self.sess.get(self.url,
+                            params=self.params).json()
         return res['data']['secretKey']
 
-    def translate(self, i: str, source: str = LANG.AUTO, to: str = LANG.默认) -> str:
+    def translate(self, i: str, source: str = LANG.AUTO,
+                  to: str = LANG.默认) -> str:
         """
             翻译主方法，默认中文翻译成英文，英文翻译成中文
         :param i: 需要翻译的字符串
@@ -111,7 +117,8 @@ class YOUDAO(object):
             "to": to,
             "dictResult": "true",
             "keyid": "webfanyi",
-            "sign": self.get_sign(nowtime, self.secretKey),
+            "sign": self.get_sign(nowtime,
+                                  self.secretKey),
             "client": "fanyideskweb",
             "product": "webfanyi",
             "appVersion": "1.0.0",
@@ -121,8 +128,12 @@ class YOUDAO(object):
             "keyfrom": "fanyi.web"
         }
         url = "https://dict.youdao.com/webtranslate"
-        res = self.sess.post(url, headers=self.headers, data=self.data)
-        return json.loads(self.job.call('get_decrypt', res.text))['translateResult'][0][0]['tgt']
+        res = self.sess.post(url,
+                             headers=self.headers,
+                             data=self.data)
+        return json.loads(self.job.call('get_decrypt',
+                                        res.text))['translateResult'][0][0][
+            'tgt']
 
 
 if __name__ == '__main__':

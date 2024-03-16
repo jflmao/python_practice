@@ -1,4 +1,4 @@
-var _jflmao = {};
+var _jflmao;
 (function(e) {
     function t(t) {
         for (var n, a, i = t[0], s = t[1], l = t[2], d = 0, u = []; d < i.length; d++)
